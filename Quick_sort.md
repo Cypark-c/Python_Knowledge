@@ -65,7 +65,7 @@ def qsort(arr):
 print(qsort(a))
 ```
 
-- 직관적이란 장점이 있으나 left, right 를 뽑아내는 리스트 컴프리헨션에서 배열을 1바퀴씩 각각 순회해야한다. 이것은 normal version과 다르게 Quicksort의 연산 횟수를 증가시킴킴
+- 직관적이란 장점이 있으나 left, right 를 뽑아내는 리스트 컴프리헨션에서 배열을 1바퀴씩 각각 순회해야한다. 이것은 normal version과 다르게 Quicksort의 연산 횟수를 증가시킴
 
 ## 참고문제
 - BOJ 1181번 [[https://www.acmicpc.net/problem/1181]]
