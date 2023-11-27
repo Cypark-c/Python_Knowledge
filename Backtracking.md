@@ -10,7 +10,8 @@
     - Pruning: 조건에 맞지 않으면 포기하고 다른 루트로 돌아가 탐색의 시간을 절약
    
 -  Code Frame
--  ```
+
+```
   def checknode(v): #node
     if promising(v):
     if there is a solution at v:
@@ -18,7 +19,7 @@
       else:
         for u in each child of v:
             checknode(u)
-   ```
+```
 
 ## Recursive function review
 
