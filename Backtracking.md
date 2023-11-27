@@ -8,6 +8,7 @@
   - 후보 군이 제약조건에 걸리면, 다른 후보군으로 넘어가 탐색함.
     - Promising: 해당 루트가 조건에 맞는가?
     - Pruning: 조건에 맞지 않으면 포기하고 다른 루트로 돌아가 탐색의 시간을 절약
+    - <b>무엇보다 순회할 때의 후처리가 매우 중요함(아래 Image View 참고)</b>
    
 -  Code Frame
 
@@ -20,6 +21,10 @@
         for u in each child of v:
             checknode(u)
 ```
+
+- Image View
+- ![image](https://github.com/Cypark-c/Python_Knowledge/assets/76925535/146d0738-c133-40ed-8481-f9cc0b9ee2c3)
+
 
 ## Recursive function review
 
