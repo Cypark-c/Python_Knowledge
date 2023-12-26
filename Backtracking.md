@@ -38,6 +38,35 @@ v = [0]*(N+1)       # 중복확인을 위한 visited[]
   - <b>보면 알 수 있지만, 원래 lst를 변형하지 않도록 lst+[j]와 같은 형태로 사용하고 있음!</b>
   - 결론은 append를 써도 되기는 하지만, 함수를 처리하고 나서 append가 변형된 값이 <b>for loop의 다음 인덱스에 반영되지 않도록 해야한다.</b>
 
+
+```
+#만약에 pop 등을 이용한다면 이런 식으로 작성할 수도 있긴하다.
+
+def DFS_BT(number_lt,visited):
+
+    if len(number_lt)==k:
+        # 결과 append
+        Str=''.join(number_lt)
+        if Str not in result:
+            result.append(Str)
+        return
+
+    # 방문노드를 append했으면 방문하지 않은 곳 중에서 하나를 골라서 들어감
+    for index in range(len(visited)):
+        # 아직 방문하지 않은 노드면 방문
+        if visited[index]==0:
+            # 방문노드 append
+            number_lt.append(str(cardlist[index]))
+            visited[index] = 1  # 1은 해당 노드를 방문했다는 의미
+            DFS_BT(number_lt,visited) # 여기서 오류나기 쉬움
+            # 해당 노드는 방문했으면 다시 원복 시켜주어야 함
+            visited[index]=0 # 원복 ㅇㅇ 여기까진 알겠음
+            #number_lt=number_lt[:-1]
+            number_lt.pop() # 이것도 number_lt=number_lt[:-1] 이랑 다름 ㅋㅋㅋㅋ 미친
+```
+
+- <b>그런데 주석에 달아놓았듯이 pop 대신에 slicing을 이용하려고 하면 매우 크나큰 문제가 발생할 수 있음</b>
+
 - Image View
 - ![image](https://github.com/Cypark-c/Python_Knowledge/assets/76925535/146d0738-c133-40ed-8481-f9cc0b9ee2c3)
 
