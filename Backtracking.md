@@ -13,16 +13,30 @@
 - 제대로 되었다면, 루트노드를 한번 호출하는 것에서 백트래킹은 끝나야함. 메인함수에서 for문으로 돌린다? →정말 그렇게 복잡해야 하는지 생각해볼 것.
    
 -  Code Frame
+```
+def dfs(n, lst):
+    # 종료조건(n에 관련) 처리+정답처리
+    if n==M:    # M개의 수열을 완성
+        ans.append(lst)
+        return
 
+    # 하부단계(함수) 호출
+    for j in range(1, N+1):
+        if v[j]==0: # 선택하지 않은 숫자인 경우 추가
+            v[j]=1
+            dfs(n+1, lst+[j])
+            v[j]=0
+
+N, M = map(int, input().split())
+ans = []            # 정답 리스트를 저장할 리스트
+v = [0]*(N+1)       # 중복확인을 위한 visited[]
 ```
-  def checknode(v): #node
-    if promising(v):
-    if there is a solution at v:
-        write the solution
-      else:
-        for u in each child of v:
-            checknode(u)
-```
+
+- <b>for문이 특히 중요함! 처리 방식을 완벽하게 따라해야한다.</b>
+- 특히 for 루프의 방문했던 노드 취소하는 방식
+- 특히 for 루프 내부의 dfs의 실행에서 lst를 처리하는 방식
+  - <b>보면 알 수 있지만, 원래 lst를 변형하지 않도록 lst+[j]와 같은 형태로 사용하고 있음!</b>
+  - 결론은 append를 써도 되기는 하지만, 함수를 처리하고 나서 append가 변형된 값이 <b>for loop의 다음 인덱스에 반영되지 않도록 해야한다.</b>
 
 - Image View
 - ![image](https://github.com/Cypark-c/Python_Knowledge/assets/76925535/146d0738-c133-40ed-8481-f9cc0b9ee2c3)
