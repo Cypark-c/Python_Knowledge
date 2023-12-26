@@ -66,6 +66,7 @@ def DFS_BT(number_lt,visited):
 ```
 
 - <b>그런데 주석에 달아놓았듯이 pop 대신에 slicing을 이용하려고 하면 매우 크나큰 문제가 발생할 수 있음</b>
+- Chat GPT에 문의한 결과로는 일단 리스트 슬라이싱 자체는 새로운 리스트를 생성을 하는 것이다 보니. 저게 for 루프 안에서 생성이 되면, 그 루프 안에서만 공유가 된다. 이렇게 생각해 볼 수 있을 것 같음(추후 검증은 나중에)
 
 - Image View
 - ![image](https://github.com/Cypark-c/Python_Knowledge/assets/76925535/146d0738-c133-40ed-8481-f9cc0b9ee2c3)
