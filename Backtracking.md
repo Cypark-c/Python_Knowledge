@@ -92,6 +92,29 @@ def DFS_BT(number_lt,visited):
 - <b>그런데 주석에 달아놓았듯이 pop 대신에 slicing을 이용하려고 하면 매우 크나큰 문제가 발생할 수 있음</b>
 - Chat GPT에 문의한 결과로는 일단 리스트 슬라이싱 자체는 새로운 리스트를 생성을 하는 것이다 보니. 저게 for 루프 안에서 생성이 되면, 그 루프 안에서만 공유가 된다. 이렇게 생각해 볼 수 있을 것 같음(추후 검증은 나중에)
 
+## append, pop 으로 구현할 때는 이런 부분을 조심해야함
+```
+def DFS_B(start,count,Narr):
+    if count==M:
+        result.append(Narr) # Caution!!!!
+        print("1",result,Narr,count)
+        return
+
+    # start 쓰는 방식이 훨씬 나음
+    for i in range(start,N+1):
+        Narr.append(i)
+        print("0",result,Narr,count)
+        DFS_B(i,count+1,Narr)
+        print("2",result,Narr,count)
+        Narr.pop()
+        print("3",result,Narr)
+```
+- <b>저기서 Caution!! 이라고 되어있는 부분. 그냥 append를 해서는 안된다.</b>
+  - Narr은 메모리 공간에서 계속 존재하고 있다. <b>사실은 이게 치명적임. 왜냐면 pop 연산을 할때 Result에 결과로서 들어가 있던 Narr이 같이 뽑혀짐.</b>
+  - 결과로서 Result에 넣어 놓았는데 마치 포인터처럼 뽑히게되는 결과를 보여줌. 더군다나 Result에서 Narr이 지워지는 것도 아니라서 pop을 한 결과는 Narr 자체에서 원소
+하나만 뽑힐 뿐이지 실상은 [[]] 이런 형태로 Result에 [] 로서 존재함. 그래서 여기에 Narr.append(2)를 하면 분명 Result.append(2)가 아님에도 결과는 황당함. [[2]] 로 바로 입력이 된다는 것. 그래서 웬만하면 result.append(Narr[:]) 이 방식을 이용하는게 뒤탈이 없음. 
+
+
 - Image View
 - ![image](https://github.com/Cypark-c/Python_Knowledge/assets/76925535/146d0738-c133-40ed-8481-f9cc0b9ee2c3)
 
